@@ -2,6 +2,7 @@ package com.sachin.repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.security.PublicKey;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -78,6 +79,36 @@ class StudentRepositoryTest {
 	public void findByLastNameNotNull() {
 		List<Student> findByLastNameNotNull = studentRepository.findByLastNameNotNull();
 		findByLastNameNotNull.stream().forEach(s->System.out.println(s.toString()));
+	}
+	
+	@Test
+	public void getStudentByEmail() {
+		Student studentByEmail = studentRepository.getStudentByEmail("sachin@gmail.com");
+		System.out.println(studentByEmail.toString());
+	}
+	
+	@Test
+	public void getStudentName() {
+		String studentsNameByEmail = studentRepository.getStudentsNameByEmail("sachin@gmail.com");
+		System.out.println("The of the student whose mail id is matched : "+studentsNameByEmail);
+	}
+	
+	@Test
+	public void getStudentByEmailNative() {
+		Student studentByEmailNative = studentRepository.getStudentByEmailNative("nana@gmail.com");
+		System.out.println(studentByEmailNative.toString());
+	}
+	
+	@Test
+	public void getStudentByEmailNativeParam() {
+		Student studentByEmailNative = studentRepository.getStudentByEmailNativeParam("nana@gmail.com");
+		System.out.println(studentByEmailNative.toString());
+	}
+	
+	@Test
+	public void updateNameByEmailId() {
+		int updateStudentNameByEmailId = studentRepository.updateStudentNameByEmailId("sneha","nana@gmail.com" );
+		System.out.println("The records affected are :"+updateStudentNameByEmailId);
 	}
 
 }
